@@ -1,9 +1,11 @@
 from flask import Flask, jsonify, render_template
 from sqlalchemy import create_engine, inspect
 from covid_etl import transform, load
+from config import db_user, db_password, db_host, db_port, db_name
+
 
 app = Flask(__name__)
-engine = create_engine("postgresql://postgres:8mlbxtdRI93TKYxpBzW0@localhost:5432/covid_df")
+engine = create_engine(f"postgresql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}")
 connection = engine.connect()
 
 @app.route("/graphs/")
@@ -41,7 +43,6 @@ if __name__ == '__main__':
     if not force and "covid_summary" in inspect(engine).get_table_names():
         app.run(debug=True, use_reloader=False)
     else:
-
         dataframe = transform()
         load(dataframe, "covid_summary")
         app.run(debug=True, use_reloader=False)
