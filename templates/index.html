@@ -1,82 +1,63 @@
 {% extends 'base.html' %}
 
-{% block content %}
-    <h1>{% block title %} Effects of Covid through Country's Policy response {% endblock %}</h1>
+{% block title %}Summary{% endblock %}
 
-    <div class="row about-row row-odd">
-        <div class="col-md-6 col-sm-12 text-box">
-            <h2>Introduction</h2>
-            <p>COVID-19 is a disease that has affected most, if not all, countries in the world.</p>
-            <p>But, the magnitude of these impacts has varied a lot between countries – some have been very successful in limiting the spread of the disease, and in preventing deaths.</p>
-            <p>There are many reasons why some countries might have been worse-hit than others. Differences in governmental policy responses may explain some differences.</p>
-            <p>To understand which policies might be effective in controlling the outbreak – especially as countries move towards easing restrictions – it’s essential that we have a good dataset on the timing and stringency of responses across the world.</p>
-            <p>In this article, we present data and research from the Coronavirus Government Response Tracker (OxCGRT), published and managed by researchers at the Blavatnik School of Government at the University of Oxford.</p>      
+{% block header %}
+
+{% endblock %}
+
+{% block content %}
+<!-- <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Covid Data Analysis</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head> -->
+  
+  <body>
+  
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 jumbotron text-center">
+          <h1>Covid Data Analysis</h1>
+          <p>Use the interactive charts below to explore the dataset</p>
         </div>
-        <!-- <div class="col-md-6 col-sm-12 image-box">
-            <img src="{{url_for('static', filename='images/dashboard_dark.png')}}" height="300" width="300">
-        </div> -->
-    </div>
-    <div class="row about-row">
-        <!-- <div class="col-md-6 col-sm-12 image-box">
-            <img src="{{url_for('static', filename='images/technology_dark.png')}}" height="300" width="300">
-        </div> -->
-        <div class="col-md-6 col-sm-12 text-box">
-            <h2>Policy Responses</h2>
-            <p>There are many tools and technologies used to create this web app. Some of them are listed below:</p>
-            <ul>
-                <li><a href="https://flask.palletsprojects.com/" target="_blank" rel="noreferrer">Flask</a></li>
-                <li><a href="https://www.postgresql.org/" target="_blank" rel="noreferrer">PostgreSQL</a></li>
-                <li><a href="https://www.sqlalchemy.org/" target="_blank" rel="noreferrer">SQL Alchemy</a></li>
-                <li><a href="https://d3js.org/" target="_blank" rel="noreferrer">D3 JS</a></li>
-                <li><a href="https://plotly.com/javascript/" target="_blank" rel="noreferrer">Plotly</a></li>
-                <li><a href="https://getbootstrap.com/" target="_blank" rel="noreferrer">Bootstrap</a></li>
-                <li><a href="https://jquery.com/" target="_blank" rel="noreferrer">jQuery</a></li>
-                <li><a href="https://select2.org/" target="_blank" rel="noreferrer">Select 2</a></li>
-            </ul>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="well">
+            <h5>Select country:</h5>
+            <select id="selDataset" onchange="optionChanged(this.value)"></select>
+          </div>
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Country Information</h3>
+            </div>
+            <div id="sample-metadata" class="panel-body"></div>
+          </div>
         </div>
-    </div>
-    <div class="row about-row row-odd">
-        <div class="col-md-6 col-sm-12 text-box">
-            <h2>Key in Music</h2>
-            <p>key, in music, a system of functionally related chords deriving from the major and minor scales, with a
-                central note, called the tonic (or keynote). The central chord is the tonic triad, which is built on the
-                tonic note. Any of the 12 tones of the chromatic scale can serve as the tonic of a key. Accordingly, 12
-                major keys and 12 minor keys are possible, and all are used in music. In musical notation, the key is
-                indicated by the key signature, a group of sharp or flat signs at the beginning of each staff.</p>
-            <a href="https://www.britannica.com/art/key-music" target="_blank" rel="noreferrer">Learn More about Keys in
-                Music</a>
+        <div class="col-md-12">
+          <div id="charts"></div>
         </div>
-        <!-- <div class="col-md-6 col-sm-12 image-box">
-            <img src="{{url_for('static', filename='images/key_dark.png')}}" height="300" width="300">
-        </div> -->
-    </div>
-    <div class="row about-row">
-        <!-- <div class="col-md-6 col-sm-12 image-box">
-            <img src="{{url_for('static', filename='images/signature_dark.png')}}" height="300" width="300">
-        </div> -->
-        <div class="col-md-6 col-sm-12 text-box">
-            <h2>Time Signature</h2>
-            <p>The time signature (also known as meter signature, metre signature, or measure signature) is a
-                notational convention used in Western musical notation to specify how many beats (pulses) are contained in
-                each measure (bar), and which note value is equivalent to a beat.</p>
-            <a href="https://en.wikipedia.org/wiki/Time_signature" target="_blank" rel="noreferrer">Learn
-                More about Time Signature</a>
+        <div class="col-md-12">
+          <div id="deaths"></div>
         </div>
-    </div>
-    <div class="row about-row row-odd">
-        <div class="col-md-6 col-sm-12 text-box">
-            <h2>References and Datasets</h2>
-            <p>Dataset from <a href="https://ourworldindata.org/coronavirus" target="_blank" rel="noreferrer">ourworldindata.org/coronavirus.</a> 
-                
-            </p>
-            <p>Full Citation to <a href="https://ourworldindata.org/coronavirus#citation"
-                target="_blank" rel="noreferrer">Edouard Mathieu, Hannah Ritchie, Lucas Rodés-Guirao, Cameron Appel, Charlie Giattino, Joe Hasell, Bobbie Macdonald, Saloni Dattani, Diana Beltekian, Esteban Ortiz-Ospina and Max Roser (2020) - "Coronavirus Pandemic (COVID-19)". Published online at OurWorldInData.org. Retrieved from: 'https://ourworldindata.org/coronavirus' [Online Resource].</a>
-                
-            </p>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div id="bubble"></div>
         </div>
-        <!-- <div class="col-md-6 col-sm-12 image-box">
-            <img src="{{url_for('static', filename='images/attribution_dark.png')}}" height="300" width="300">
-        </div> -->
+      </div>
     </div>
+  
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script>const url = "http://127.0.0.1:5000{{url_for('summary')}}";</script>
+    <script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+    <!-- <script src="{{ url_for('static', filename='js/map.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/about.js') }}"></script> -->
     
-    {% endblock %}
+  </body>
+
+  {% endblock %}

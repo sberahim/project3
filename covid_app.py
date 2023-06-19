@@ -1,36 +1,47 @@
 from flask import Flask, jsonify, render_template
 from sqlalchemy import create_engine, inspect
-
-# from config import db_user, db_password, db_host, db_port, db_name
-# from etl import extract, transform, load
+from covid_etl import transform, load
 
 app = Flask(__name__)
-# engine = create_engine(f"postgresql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}")
+engine = create_engine("postgresql://postgres:9291@localhost:5432/covid_df")
+connection = engine.connect()
 
-
-@app.route("/")
+@app.route("/graphs/")
 def index():
-    return render_template("index.html", pages={
-        "about":"active",
-        "summary": "",
-        "map": ""
-    })
-
-@app.route("/summary/")
-def summary():
-    return render_template("summary.html", pages={
-        "about":"active",
-        "summary": "",
-        "map": ""
+    return render_template("index.html", pages = {
+        "index": "active",
+        "map": "",
+        "about": ""
     })
 
 @app.route("/map/")
 def map():
-    return render_template("map.html", pages={
-        "about":"active",
-        "summary": "",
-        "map": ""
+    return render_template("map.html", pages = {
+        "index": "",
+        "map": "active",
+        "about": ""
     })
 
-if __name__ == "__main__":
-    app.run(debug=True)
+@app.route("/")
+def about():
+    return render_template("about.html", pages = {
+        "index": "",
+        "map": "",
+        "about": "active"
+    })
+
+@app.route("/api/covid_summary.json")
+def summary():
+ 
+    results = engine.execute("SELECT * FROM covid_summary")
+    return jsonify([dict(data) for data in results])
+
+if __name__ == '__main__':
+    force = False
+    if not force and "covid_summary" in inspect(engine).get_table_names():
+        app.run(debug=True, use_reloader=False)
+    else:
+
+        dataframe = transform()
+        load(dataframe, "covid_summary")
+        app.run(debug=True, use_reloader=False)
