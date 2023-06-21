@@ -1,14 +1,16 @@
 const chartCountries = [
-    "Australia",
-    "France",
-    "Philippines",
+    "United States",
+    "United Kingdom",
+    "Germany",
     "India",
-    "China",
-    "Dubai",
-    "South Africa",
-    "Malaysia",
+    "Spain",
+    "France",
     "Brazil",
-    "Spain"
+    "Canada",
+    "Australia",
+    "New Zealand",
+    "Sweden",
+    "Mexico"
 ]
 
 function init() {
