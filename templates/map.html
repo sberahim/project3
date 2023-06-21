@@ -7,5 +7,39 @@
 {% endblock %}
 
 {% block content %}
-<h1>Map Analysis</h1>
+<h1>Data Analysis</h1>
+
+    <div class="row about-row row-odd">
+        <div class="col-md-10 col-sm-12 text-box">
+            <h2>Percentage of Total COVID-19 Cases by Continent</h2>
+            
+            <p></p>
+            
+        </div>
+        <div class="col-md-10 col-sm-12 image-box">
+            <img src="{{url_for('static', filename='images/Continent_cases.png')}}" height="500" width="500">
+        </div>
+    </div>
+
+    <div class="row about-row row-odd">
+        <div class="col-md-10 col-sm-12 text-box">
+            <h2>Percentage of Total COVID-19 Death by Continent</h2>
+            
+                  
+        </div>
+        <div class="col-md-10 col-sm-12 image-box">
+            <img src="{{url_for('static', filename='images/Continent_death.png')}}" height="500" width="500">
+        </div>
+    </div>
+    <div class="row about-row">        
+        <div class="col-md-10 col-sm-12 text-box">
+            <h2>Percentage of Total COVID-19 Vaccinations by Continent</h2>
+            
+            
+            <p></p>
+        </div>
+        <div class="col-md-10 col-sm-12 image-box">
+            <img src="{{url_for('static', filename='images/Continent_vaccination.png')}}" height="500" width="500">
+        </div>
+    </div>
 {% endblock %}

@@ -1,70 +1,46 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{% block title %} Effects of Covid through Country's Policy response {% endblock %}</h1>
+    <h1>{% block title %} Impact of Covid across Countries {% endblock %}</h1>
 
     <div class="row about-row row-odd">
-        <div class="col-md-6 col-sm-12 text-box">
-            <h2>Introduction</h2>
-            <p>COVID-19 is a disease that has affected most, if not all, countries in the world.</p>
-            <p>But, the magnitude of these impacts has varied a lot between countries – some have been very successful in limiting the spread of the disease, and in preventing deaths.</p>
-            <p>There are many reasons why some countries might have been worse-hit than others. Differences in governmental policy responses may explain some differences.</p>
-            <p>To understand which policies might be effective in controlling the outbreak – especially as countries move towards easing restrictions – it’s essential that we have a good dataset on the timing and stringency of responses across the world.</p>
-            <p>In this article, we present data and research from the Coronavirus Government Response Tracker (OxCGRT), published and managed by researchers at the Blavatnik School of Government at the University of Oxford.</p>      
+        <div class="col-md-10 col-sm-12 text-box">
+            <h2>Coronavirus Country Profiles</h2>
+            <p>In a fast-evolving pandemic it is not a simple matter to identify the countries that are most successful in making progress against it. 
+                For this assessment, we track the impact of the pandemic across our publication and we built country profiles for 207 countries 
+                to study in depth the statistics on the coronavirus pandemic for every country in the world.</p>
+            <p></p>
+            <p>Every profile includes four sections:</p>
+                <ul>
+                    <li>Cases: How many new cases are being confirmed each day? How many cases have been confirmed since the pandemic started? How is the number of cases changing?</li>
+                    <li>Deaths: How many deaths from COVID-19 have been reported? Is the number of deaths rising or falling? How does the death rate compare to other countries?</li>
+                    <li>Vaccinations: How many vaccine doses are being administered each day? How many doses have been administered in total? What share of the population has been vaccinated?</li>
+                    <li>Testing: How much testing for coronavirus do countries conduct? How many tests did a country do to find one COVID-19 case?</li>                  
+                </ul>
         </div>
-        <!-- <div class="col-md-6 col-sm-12 image-box">
-            <img src="{{url_for('static', filename='images/dashboard_dark.png')}}" height="300" width="300">
-        </div> -->
+        <div class="col-md-1 col-sm-12 image-box">
+            <img src="{{url_for('static', filename='images/ourworldindata.png')}}" height="200" width="200">
+        </div>
     </div>
-    <div class="row about-row">
-        <!-- <div class="col-md-6 col-sm-12 image-box">
-            <img src="{{url_for('static', filename='images/technology_dark.png')}}" height="300" width="300">
-        </div> -->
-        <div class="col-md-6 col-sm-12 text-box">
-            <h2>Policy Responses</h2>
-            <p>There are many tools and technologies used to create this web app. Some of them are listed below:</p>
-            <ul>
-                <li><a href="https://flask.palletsprojects.com/" target="_blank" rel="noreferrer">Flask</a></li>
-                <li><a href="https://www.postgresql.org/" target="_blank" rel="noreferrer">PostgreSQL</a></li>
-                <li><a href="https://www.sqlalchemy.org/" target="_blank" rel="noreferrer">SQL Alchemy</a></li>
-                <li><a href="https://d3js.org/" target="_blank" rel="noreferrer">D3 JS</a></li>
-                <li><a href="https://plotly.com/javascript/" target="_blank" rel="noreferrer">Plotly</a></li>
-                <li><a href="https://getbootstrap.com/" target="_blank" rel="noreferrer">Bootstrap</a></li>
-                <li><a href="https://jquery.com/" target="_blank" rel="noreferrer">jQuery</a></li>
-                <li><a href="https://select2.org/" target="_blank" rel="noreferrer">Select 2</a></li>
-            </ul>
+    <div class="row about-row">        
+        <div class="col-md-10 col-sm-12 text-box">
+            <h2>Why this dashboard?</h2>
+            <p>A one-stop, interactive dashboard provides a powerful and efficient solution for users to access, analyze, and 
+                manage data in a centralized and user-friendly manner, enabling them to derive valuable insights and make informed decisions.</p>
+            <p>This dashboard is fully customisable. </p>
         </div>
     </div>
     <div class="row about-row row-odd">
-        <div class="col-md-6 col-sm-12 text-box">
-            <h2>Key in Music</h2>
-            <p>key, in music, a system of functionally related chords deriving from the major and minor scales, with a
-                central note, called the tonic (or keynote). The central chord is the tonic triad, which is built on the
-                tonic note. Any of the 12 tones of the chromatic scale can serve as the tonic of a key. Accordingly, 12
-                major keys and 12 minor keys are possible, and all are used in music. In musical notation, the key is
-                indicated by the key signature, a group of sharp or flat signs at the beginning of each staff.</p>
-            <a href="https://www.britannica.com/art/key-music" target="_blank" rel="noreferrer">Learn More about Keys in
-                Music</a>
-        </div>
-        <!-- <div class="col-md-6 col-sm-12 image-box">
-            <img src="{{url_for('static', filename='images/key_dark.png')}}" height="300" width="300">
-        </div> -->
+        <div class="col-md-10 col-sm-12 text-box">
+            <h2>Who is this dashboard for?</h2>
+            <p>Travel Insurance Providers: The dashboard can serve as a centralized platform for travel insurance providers to provide interactive insights in cases/deaths/vaccination, in return, can able to provide risk-based insurance premium cost for travellers in high risks countries, i.e. low vaccination rate countries.</p>
+            <p>Travel Tour Operators: For travel tour operators, the dashboard can offer insights and tools to manage and track their tour offerings, providing better operation and cost-return based on the country’s risk covid profile.</p>   
+            <p></p>
+        </div>        
     </div>
-    <div class="row about-row">
-        <!-- <div class="col-md-6 col-sm-12 image-box">
-            <img src="{{url_for('static', filename='images/signature_dark.png')}}" height="300" width="300">
-        </div> -->
-        <div class="col-md-6 col-sm-12 text-box">
-            <h2>Time Signature</h2>
-            <p>The time signature (also known as meter signature, metre signature, or measure signature) is a
-                notational convention used in Western musical notation to specify how many beats (pulses) are contained in
-                each measure (bar), and which note value is equivalent to a beat.</p>
-            <a href="https://en.wikipedia.org/wiki/Time_signature" target="_blank" rel="noreferrer">Learn
-                More about Time Signature</a>
-        </div>
-    </div>
+    
     <div class="row about-row row-odd">
-        <div class="col-md-6 col-sm-12 text-box">
+        <div class="col-md-10 col-sm-12 text-box">
             <h2>References and Datasets</h2>
             <p>Dataset from <a href="https://ourworldindata.org/coronavirus" target="_blank" rel="noreferrer">ourworldindata.org/coronavirus.</a> 
                 
@@ -74,9 +50,7 @@
                 
             </p>
         </div>
-        <!-- <div class="col-md-6 col-sm-12 image-box">
-            <img src="{{url_for('static', filename='images/attribution_dark.png')}}" height="300" width="300">
-        </div> -->
+        
     </div>
     
     {% endblock %}
