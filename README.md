@@ -24,6 +24,12 @@ Dataset from ourworldindata.org/coronavirus.
 
 Full Citation to Edouard Mathieu, Hannah Ritchie, Lucas Rodés-Guirao, Cameron Appel, Charlie Giattino, Joe Hasell, Bobbie Macdonald, Saloni Dattani, Diana Beltekian, Esteban Ortiz-Ospina and Max Roser (2020) - "Coronavirus Pandemic (COVID-19)". Published online at OurWorldInData.org. Retrieved from: 'https://ourworldindata.org/coronavirus' [Online Resource].
 
+Steps:
+1. git clone everything to local drive
+2. change the password in config.py
+3. install postgreSQL, if not yet done
+4. Running the covid_app.py using command: python covid_app.py
+
 Config.py file requirments
 Use the following guidelines:
 - db_user = "postgres" #check and change to your PostgreSQL user name, if different
